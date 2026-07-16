@@ -5,7 +5,7 @@ namespace ECommerceAPI.Domain.Specifications;
 
 public class ProductsWithFilters : Specification<Product>
 {
-    public ProductsWithFilters(int? brandId, int? typeId, string? sort)
+    public ProductsWithFilters(int? brandId, int? typeId, string? sort, int pageIndex, int pageSize)
     {
         Query.Include(p => p.ProductBrand)
              .Include(p => p.ProductType);
@@ -30,5 +30,20 @@ public class ProductsWithFilters : Specification<Product>
                     break;
             }
         }
+
+        Query.Skip((pageIndex - 1) * pageSize)
+             .Take(pageSize);
+    }
+}
+
+public class ProductsWithFiltersCount : Specification<Product>
+{
+    public ProductsWithFiltersCount(int? brandId, int? typeId)
+    {
+        if (brandId.HasValue)
+            Query.Where(p => p.ProductBrandId == brandId.Value);
+
+        if (typeId.HasValue)
+            Query.Where(p => p.ProductTypeId == typeId.Value);
     }
 }

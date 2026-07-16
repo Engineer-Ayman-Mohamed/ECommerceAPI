@@ -1,0 +1,37 @@
+@ECommerceAPI.API_HostAddress = https://localhost:7255
+
+### Get all products
+GET {{ECommerceAPI.API_HostAddress}}/api/v1/products
+Accept: application/json
+
+### Get products with filters
+GET {{ECommerceAPI.API_HostAddress}}/api/v1/products?brandId=1&typeId=1&sort=priceasc&pageIndex=1&pageSize=5
+Accept: application/json
+
+### Get product by id
+GET {{ECommerceAPI.API_HostAddress}}/api/v1/products/1
+Accept: application/json
+
+### Get brands
+GET {{ECommerceAPI.API_HostAddress}}/api/v1/brands
+Accept: application/json
+
+### Get types
+GET {{ECommerceAPI.API_HostAddress}}/api/v1/types
+Accept: application/json
+
+### Get delivery methods
+GET {{ECommerceAPI.API_HostAddress}}/api/v1/orders/delivery-methods
+Accept: application/json
+
+### Health check
+GET {{ECommerceAPI.API_HostAddress}}/health
+Accept: application/json
+
+### Readiness check
+GET {{ECommerceAPI.API_HostAddress}}/health/ready
+Accept: application/json
+
+### Liveness check
+GET {{ECommerceAPI.API_HostAddress}}/health/live
+Accept: application/json
